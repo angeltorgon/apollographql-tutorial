@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -47,6 +47,11 @@ const Launches: React.FC<LaunchesProps> = () => {
     GetLaunchListTypes.GetLaunchList, 
     GetLaunchListTypes.GetLaunchListVariables
   >(GET_LAUNCHES);
+
+  useEffect(() => {
+    console.log("error - ", error)
+  })
+
 
   if (loading) return <Loading />;
   if (error || !data) return <p>ERROR</p>;

@@ -18,7 +18,7 @@ const IS_LOGGED_IN = gql`
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-    uri: 'http://localhost:4000/',
+    uri: 'http://localhost:4000/graphql',
     headers: {
         authorization: localStorage.getItem('token'),
     },
@@ -34,8 +34,8 @@ cache.writeData({
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
     cache,
     link,
-    typeDefs,
-    resolvers
+    resolvers,
+    typeDefs
 });
 
 function IsLoggedIn() {
