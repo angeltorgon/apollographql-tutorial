@@ -27,11 +27,11 @@ module.exports = {
   },
   Mutation: {
     login: async (_, { email }, { dataSources }) => {
-      const user = await dataSources.userAPI.findOrCreqateUser({ email })
+      const user = await dataSources.userAPI.findOrCreateUser({ email })
       if (user) return Buffer.from(email).toString('base64')
     },
     bookTrips: async (_, { launchIds }, { dataSources }) => {
-      const results = await dataSources.userAPI.bootTrips({ launchIds }) 
+      const results = await dataSources.userAPI.bookTrips({ launchIds }) 
       const launches = await dataSources.launchAPI.getLaunchesByIds({
         launchIds
       })
